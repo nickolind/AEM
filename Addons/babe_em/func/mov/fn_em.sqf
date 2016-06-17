@@ -63,9 +63,13 @@ private ["_pos", "_toppos"];
 
 	if (str _pos == "[0,0,0]") exitwith
 	{
-		if (isTouchingGround _climber && !EM_climbing && (getstamina _climber > 8)) then
+		// if (isTouchingGround _climber && !EM_climbing && (getstamina _climber > 8)) then
+		// {
+			// [_climber, _wlj] call babe_em_fnc_jump			
+		// };
+		if (_climber == player) then
 		{
-			[_climber, _wlj] call babe_em_fnc_jump			
+			EM_busy = false;
 		};
 	};
 
@@ -206,7 +210,7 @@ private ["_pos", "_toppos"];
 					};
 				};
 			};
-			case (_h > _overa && _h < _overb && load _climber < _wl3 && _enableover):
+			case (_h > _overa && _h < _overb && load _climber < _wl1 && _enableover):
 			{
 				_stmpn = 6;
 				_stmpn = _stmpn * 0.5 + _stmpn * 0.5 * (load _climber);
@@ -251,13 +255,17 @@ private ["_pos", "_toppos"];
 	};
 	if (_anm == "") exitwith 
 	{
-		if (isTouchingGround _climber && !EM_climbing && (getstamina _climber > 8)) then
+		// if (isTouchingGround _climber && !EM_climbing && (getstamina _climber > 8)) then
+		// {
+			// [_climber, _wlj] call babe_em_fnc_jump			
+		// };
+		if (_climber == player) then
 		{
-			[_climber, _wlj] call babe_em_fnc_jump			
+			EM_busy = false;
 		};
 	};
 	EM_climbing = true;
 
 	["EH_em", "animationState (_condpars select 0) == (_condpars select 1)", [_climber, _anm], "babe_em_fnc_exec_em", [_pos, _over, _climber], true, "babe_em_fnc_finish_em", [_toppos, _over, _stmpn, _climber], -1] call babe_core_fnc_addEH;
-	_climber setAnimSpeedCoef 1-(load _climber)*0.3;
+	_climber setAnimSpeedCoef 0.6-(load _climber)*0.3;
 	_climber playMove _anm;

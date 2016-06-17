@@ -58,11 +58,14 @@ EM_busy = false;
 
 EM_climbing = false;
 
-EM_heightsOn = [0.25,1,2,2.25,3];
+EM_heightsOn = 		[0.25,	1,		2,		2.25,	3];
 
-EM_heightsOver = [0.25,1.1,1.7,2.25,3];
+EM_heightsOver = 	[0.25,	1.1,	1.7,	2.5,	3];
 
-EM_weightlimits = [1, 1, 1, 1]; 
+				// Default: 		EM_weightlimits = [1, 1, 1, 1]
+if (isNil "EM_weightlimits") then {EM_weightlimits = [0.9, 0.71, 0.331, 1]}; 	// GetOn: 	[1-2m--hopIn, 2-2.25m--Climb, 2.25-3m--Pull&Climb, Jump]
+																			// GetOver: [1-2m--hopIn, 2-2.25m--Climb, 2.25-3m--Pull&Climb, Jump]
+																			// 1 -- ~45kg, 0.71 -- ~32kg, 0.331 -- ~15kg		0.5 -- ~22.7kg
 
 EM_enable = [true, true];
 
