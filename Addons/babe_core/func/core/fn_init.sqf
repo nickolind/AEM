@@ -108,11 +108,11 @@ _id = addMissionEventHandler ["loaded",{[] call babe_core_fnc_init}];
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-["EH_ModMenu", "!IsNull findDisplay 49", [], "babe_core_fnc_modmenu", [], true, "babe_core_fnc_modmenu_exit", [], -1] call babe_core_fnc_addEH;
+// ["EH_ModMenu", "!IsNull findDisplay 49", [], "babe_core_fnc_modmenu", [], true, "babe_core_fnc_modmenu_exit", [], -1] call babe_core_fnc_addEH;
 
 
-["EH_fd", "dialog", [], "{babe_core_keysdown = [];}", [], false, "{}", [], -1] call babe_core_fnc_addEH;
-["EH_keyH", "true", [], "babe_core_fnc_keyH", [], false, "{}", [], -1] call babe_core_fnc_addEH;
+// ["EH_fd", "dialog", [], "{babe_core_keysdown = [];}", [], false, "{}", [], -1] call babe_core_fnc_addEH;
+// ["EH_keyH", "true", [], "babe_core_fnc_keyH", [], false, "{}", [], -1] call babe_core_fnc_addEH;
 
 babe_core_init = true;
 

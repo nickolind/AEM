@@ -25,4 +25,4 @@
 
 	[_ctrl] call babe_core_fnc_initmenu;
 
-	["EH_ModMenu2", "babe_core_mbdown", [], "babe_core_fnc_modmenu_loop", [], false, "", [], -1] call babe_core_fnc_addEH;
+	// ["EH_ModMenu2", "babe_core_mbdown", [], "babe_core_fnc_modmenu_loop", [], false, "", [], -1] call babe_core_fnc_addEH;
