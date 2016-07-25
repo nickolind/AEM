@@ -176,6 +176,7 @@ if (_cos > 0.8) exitwith
 
 	_toptest = lineintersectsSurfaces [agltoasl _posa, agltoasl _posb, _climber, objNull, true, 1, "GEOM", "FIRE"];
 	_toppos = (_toptest select 0)select 0;
+	_realtoppos = _toppos;
 
 	_postopos = ((_toptest select 0)select 3);
 
@@ -307,9 +308,61 @@ if (_cos > 0.8) exitwith
 		_pos = [0,0,0];
 	};
 
-	[_pos, _top, _toppos, _climber] call babe_em_fnc_em;
+	
+	
+	
+	
+	_blocked = false;
+	
+	if (str _pos != "[0,0,0]" && count _poses > 0) then
+	{
+		if (_top) then
+		{
+			_posa = _poses select 0;
+
+			_posb = [_posa select 0, _posa select 1, (_posa select 2) + 2];
+
+			_int4 = lineintersectsSurfaces [_posa, _posb, _climber, objNull, true, 1, "GEOM", "FIRE"];
+			
+			if (EM_debug) then
+			{
+				_a = createVehicle ["Sign_Arrow_F", _posa, [], 0, "can_collide"];
+				_a setposasl _posa;
+				_b = createVehicle ["Sign_Arrow_F", _posb, [], 0, "can_collide"];
+				_b setposasl _posb;
+			};
+			
+			_blocked = count _int4 != 0;
+		} else
+		{
+			_rpos = _poses select 0;
+			_mtw = agltoasl (_climber modeltoWorld [0,2,0]);
+			_posa = [_rpos select 0, _rpos select 1, (_rpos select 2) + 0.5];
+
+			_posb = [_mtw select 0, _mtw select 1, _posa select 2];
+
+			_int5 = lineintersectsSurfaces [_posa, _posb, _climber, objNull, true, 1, "GEOM", "FIRE"];
+			
+			if (EM_debug) then
+			{
+				_a = createVehicle ["Sign_Arrow_F", _posa, [], 0, "can_collide"];
+				_a setposasl _posa;
+				_b = createVehicle ["Sign_Arrow_F", _posb, [], 0, "can_collide"];
+				_b setposasl _posb;
+			};
+			
+			_blocked = count _int5 != 0;
+		};
+	};
 
 
+	
+
+	
+	if (!_blocked) then
+	{
+		[_pos, _top, _toppos, _climber] call babe_em_fnc_em;
+	};
 
 
 
