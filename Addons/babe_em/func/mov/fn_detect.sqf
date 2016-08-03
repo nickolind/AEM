@@ -362,6 +362,15 @@ if (_cos > 0.8) exitwith
 	if (!_blocked) then
 	{
 		[_pos, _top, _toppos, _climber] call babe_em_fnc_em;
+
+	} else {
+		if (EM_busy) then { EM_busy = false; };
+		
+	}; 
+
+	if !(EM_busy) then {
+		EM_default_animspeedcoef = 1;
+		_climber setAnimSpeedCoef EM_default_animspeedcoef;
 	};
 
 
