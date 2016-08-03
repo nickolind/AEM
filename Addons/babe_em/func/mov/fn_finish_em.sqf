@@ -30,3 +30,4 @@ private ["_toppos"];
 	};
 
 	_climber setAnimSpeedCoef 1;
+	// _climber setAnimSpeedCoef EM_default_animspeedcoef;

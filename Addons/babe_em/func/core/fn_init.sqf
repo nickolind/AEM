@@ -81,6 +81,8 @@ EM_fd_mu = 1;
 EM_fd_min_dam_h = 2.5;
 EM_fd_debug = false;
 
+EM_default_animspeedcoef = getAnimSpeedCoef player;
+
 
 
 call babe_fd_fnc_init_fd;
